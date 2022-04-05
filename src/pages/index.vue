@@ -60,7 +60,7 @@ export default {
 </script>
 
 <template>
-  <section class="max-w-xl mx-auto py-4">
+  <section class="max-w-xl mx-auto py-4 space-y-4">
     <h1 class="text-2xl text-blue-900 underline">Covid Stats:</h1>
     <Icon
       v-if="loading"
@@ -71,7 +71,7 @@ export default {
 
     <div v-if="fetchTimeout" class="flex justify-between items-center">
       <div class="italic font-semibold">
-        <p>Seems like you are on a slow connection!</p>
+        <p>This shouldn't take this long! Your connection is slow or unstable.</p>
         <span>Elapsed time:&nbsp;</span>
         <span>{{ elapsedTime }} sec</span>
       </div>
