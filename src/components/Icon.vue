@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-2 items-center justify-center">
     <img :src="path" alt />
-    <small v-if="loadingText">Loading...</small>
+    <small v-if="loadingText" class="font-semibold text-xs text-gray-500">Loading...</small>
   </div>
 </template>
 
