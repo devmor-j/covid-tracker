@@ -65,7 +65,7 @@ export default {
 
 <template>
   <section class="max-w-xl mx-auto py-4 space-y-4">
-    <h1 class="text-2xl text-blue-900 underline">Covid Stats:</h1>
+    <!-- loading icon svg -->
     <Icon
       v-if="loading"
       loading-text="true"
@@ -73,6 +73,7 @@ export default {
       class="w-20 mx-auto mt-16"
     />
 
+    <!-- 5 sec timeout message -->
     <div v-if="fetchTimeout" class="flex justify-between items-center">
       <div class="italic font-semibold">
         <p>This shouldn't take this long! Your connection is slow or unstable.</p>
@@ -85,9 +86,5 @@ export default {
         class="border-2 border-blue-800 font-semibold p-1 text-sm rounded-lg hover:bg-slate-200 transition"
       >Refresh page</button>
     </div>
-
-    <ul>
-      <li v-for="(value, key, index) in covidStats" :key="index">{{ key }}: {{ value }}</li>
-    </ul>
   </section>
 </template>
