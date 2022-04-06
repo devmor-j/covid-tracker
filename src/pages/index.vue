@@ -1,17 +1,20 @@
 <script>
 import Icon from '@/components/Icon.vue';
 // NOTE: Remove offline data in prodduction
-import offlineData from '@/data/SummaryData.js';
+// import offlineData from '@/data/SummaryData.js';
 import DataTitle from '@/components/DataTitle.vue';
 import DataBoxes from '@/components/DataBoxes.vue';
+import CountrySelect from '@/components/CountrySelect.vue';
 
 
 export default {
   name: "index",
-  components: { Icon, DataTitle, DataBoxes },
+  components: { Icon, DataTitle, DataBoxes, CountrySelect },
   data() {
     return {
-      covidStatsGlobal: {},
+      covidData: {},
+      covidStat: {},
+      dataCountry: 'Global',
       dataLoaded: false,
       loading: true,
       fetchTimeout: false,
@@ -34,19 +37,30 @@ export default {
       }, 5000);
 
       // TODO: Remove offline data and call api directly
-      // const data = await (await fetch("https://api.covid19api.com/summary")).json();
-      const data = offlineData;
-      console.log(data);
-      this.covidStatsGlobal = data.Global;
+      const data = await (await fetch("https://api.covid19api.com/summary")).json();
+      // const data = offlineData;
+      // console.log(data);
+      this.covidData = data;
+      this.covidStat = data.Global;
     },
 
     refreshPage() {
       window.location.reload();
-    }
+    },
+
+    updateDataCountry(country) {
+      if (country === 'Global') {
+        this.dataCountry = 'Global';
+        this.covidStat = this.covidData.Global;
+        return;
+      };
+      this.dataCountry = country.Country;
+      this.covidStat = country;
+    },
   },
 
   watch: {
-    covidStatsGlobal(value) {
+    covidData(value) {
       if (Object.keys(value)?.[0] ? true : false) {
         this.fetchTimeout = false;
         this.dataLoaded = true;
@@ -90,9 +104,12 @@ export default {
     </div>
 
     <!-- Show data title -->
-    <DataTitle title="Global" :date="covidStatsGlobal.Date" />
+    <DataTitle :title="dataCountry" :date="covidData.Date" />
 
     <!-- Show stats in boxes -->
-    <DataBoxes :stats="covidStatsGlobal" />
+    <DataBoxes :stats="covidStat" />
+
+    <!-- select country from list -->
+    <CountrySelect :countries="covidData.Countries" @country-changed="updateDataCountry" />
   </section>
 </template>
