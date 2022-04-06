@@ -4,5 +4,9 @@ html {
 
 /* used inside DataBoxes.vue to style each data box */
 ._data-box {
-  @apply p-3 sm:p-6 lg:p-8 rounded;
+  @apply p-3 sm:p-6 lg:p-8 rounded-md shadow-xl;
+}
+
+._screen-height {
+  min-height: calc(100vh - 2rem);
 }

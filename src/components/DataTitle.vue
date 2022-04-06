@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center justify-center">
     <h2 class="text-2xl font-bold">{{ title }}</h2>
     <div>
-      <time class="text-lg font-semibold" :datetime="date">{{ timestamp }}</time>
+      <time class="text font text-gray-600" :datetime="date">{{ timestamp }}</time>
     </div>
   </div>
 </template>

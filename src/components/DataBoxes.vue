@@ -1,16 +1,18 @@
 <template>
-  <div class="grid gap-4 sm:grid-cols-2 max-w-xs sm:max-w-3xl lg:max-w-7xl mx-auto justify-center text-lg">
+  <div
+    class="grid gap-6 sm:grid-cols-2 max-w-xs sm:max-w-3xl lg:max-w-7xl mx-auto justify-center text-lg"
+  >
     <!-- css: _data-box style in main.css -->
     <div class="bg-blue-100 _data-box">
       <!-- >>> cases -->
       <h3 class="font-bold text-center pb-1">Cases</h3>
-      <div>
+      <div class="font-semibold">
         <p>
-          <span class="font-semibold">New:</span>
+          <span class="text-gray-500 font-normal">New:</span>
           {{ statsWithComma.NewConfirmed }}
         </p>
         <p>
-          <span class="font-semibold">Total:</span>
+          <span class="text-gray-500 font-normal">Total:</span>
           {{ statsWithComma.TotalConfirmed }}
         </p>
       </div>
@@ -19,13 +21,13 @@
     <div class="bg-purple-100 _data-box">
       <!-- >>> deaths -->
       <h3 class="font-bold text-center pb-1">Deaths</h3>
-      <div>
+      <div class="font-semibold">
         <p>
-          <span class="font-semibold">New:</span>
+          <span class="text-gray-500 font-normal">New:</span>
           {{ statsWithComma.NewDeaths }}
         </p>
         <p>
-          <span class="font-semibold">Total:</span>
+          <span class="text-gray-500 font-normal">Total:</span>
           {{ statsWithComma.TotalDeaths }}
         </p>
       </div>

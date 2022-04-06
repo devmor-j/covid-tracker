@@ -2,13 +2,13 @@
   <div
     class="bg-slate-100 hover:bg-slate-200 max-w-xs mx-auto rounded-md py-4 px-8 mt-8 text-center transition-all space-y-4"
   >
-    <h2 class="text-xl font-bold">
+    <h2 class="text-xl font-semibold">
       Created by
       <a
         href="https://github.com/devmor-j"
         target="_blank"
         title="Github link"
-        class="underline"
+        class="underline font-bold"
       >
         <span class="transition-[font-weight] hover:font-black hover:text-red-500">D</span>
         <span class="transition-[font-weight] hover:font-black hover:text-orange-500">e</span>

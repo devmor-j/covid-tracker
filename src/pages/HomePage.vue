@@ -83,18 +83,21 @@ export default {
 </script>
 
 <template>
-  <section class="max-w-xl mx-auto py-4 space-y-4">
+  <section class="max-w-xl mx-auto py-4 space-y-6">
     <!-- loading icon svg -->
     <Icon
       v-if="loading"
       loading-text="true"
       path="./src/assets/svg/loading-circle.svg"
-      class="w-20 mx-auto mt-16"
+      class="w-20 mx-auto mt-4"
     />
 
     <!-- 5 sec timeout message -->
-    <div v-if="fetchTimeout" class="flex justify-between items-center">
-      <div class="italic font-semibold">
+    <div
+      v-if="fetchTimeout"
+      class="flex justify-between items-center bg-orange-100 rounded-md px-2 py-1"
+    >
+      <div class="italic font">
         <p>This shouldn't take this long! Your connection is slow or unstable.</p>
         <span>Elapsed time:&nbsp;</span>
         <span>{{ elapsedTime }} sec</span>
@@ -115,7 +118,4 @@ export default {
     <!-- select country from list -->
     <CountrySelect :countries="covidData.Countries" @country-changed="updateDataCountry" />
   </section>
-  <footer class="fixed bottom-0 left-0 w-full text-center p-1 font-semibold text-sm bg-slate-100 text-gray-400">
-    <router-link to="/about" class="underline hover:text-gray-700">About this project</router-link>
-  </footer>
 </template>
