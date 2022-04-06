@@ -1,12 +1,15 @@
 <script>
 import Icon from '@/components/Icon.vue';
+// NOTE: Remove offline data in prodduction
+import offlineData from '@/data/SummaryData.js';
+
 
 export default {
   name: "index",
   components: { Icon },
   data() {
     return {
-      covidStats: "",
+      covidStats: {},
       dataLoaded: false,
       loading: true,
       fetchTimeout: false,
@@ -28,8 +31,9 @@ export default {
 
       }, 5000);
 
-      const data = await (await fetch("https://api.covid19api.com/summary")).json();
-
+      // TODO: Remove offline data and call api directly
+      // const data = await (await fetch("https://api.covid19api.com/summary")).json();
+      const data = offlineData;
       console.log(data);
       this.covidStats = data.Global;
     },
@@ -41,7 +45,7 @@ export default {
 
   watch: {
     covidStats(value) {
-      if (value !== '') {
+      if (Object.keys(value)?.[0] ? true : false) {
         this.fetchTimeout = false;
         this.dataLoaded = true;
         clearInterval(this.elapsedTimeInterval);
