@@ -1,9 +1,9 @@
 <template>
-  <div class="grid gap-4 md:grid-cols-2 max-w-xs sm:max-w-3xl lg:max-w-7xl mx-auto justify-center">
+  <div class="grid gap-4 sm:grid-cols-2 max-w-xs sm:max-w-3xl lg:max-w-7xl mx-auto justify-center text-lg">
     <!-- css: _data-box style in main.css -->
     <div class="bg-blue-100 _data-box">
       <!-- >>> cases -->
-      <h3 class="text-lg font-bold text-center pb-1">Cases</h3>
+      <h3 class="font-bold text-center pb-1">Cases</h3>
       <div>
         <p>
           <span class="font-semibold">New:</span>
@@ -18,7 +18,7 @@
 
     <div class="bg-purple-100 _data-box">
       <!-- >>> deaths -->
-      <h3 class="text-lg font-bold text-center pb-1">Deaths</h3>
+      <h3 class="font-bold text-center pb-1">Deaths</h3>
       <div>
         <p>
           <span class="font-semibold">New:</span>

@@ -2,7 +2,7 @@
   <select
     v-model="selectedId"
     @change="onChange"
-    class="block max-w-fit w-full mx-auto p-2 border border-gray-500"
+    class="block max-w-fit w-full mx-auto p-2 text-lg border border-gray-500"
   >
     <option value="Global" selected class="font-semibold italic">Global</option>
     <option v-for="country in countries" :key="country.ID" :value="country.ID">{{ country.Country }}</option>

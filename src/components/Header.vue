@@ -5,8 +5,12 @@
       <h1 class="text-3xl md:text-4xl font-bold">Covid-19 Tracker</h1>
     </div>
     <div class="block">
-      <span>API by&nbsp;</span>
-      <a class="text-blue-300" href="https://covid19api.com/" target="_blank">covid19api.com</a>
+      <span class="text-gray-200/75">API by&nbsp;</span>
+      <a
+        class="text-blue-200/75 hover:text-blue-200"
+        href="https://covid19api.com/"
+        target="_blank"
+      >covid19api.com</a>
     </div>
   </header>
 </template>
