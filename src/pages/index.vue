@@ -3,14 +3,15 @@ import Icon from '@/components/Icon.vue';
 // NOTE: Remove offline data in prodduction
 import offlineData from '@/data/SummaryData.js';
 import DataTitle from '@/components/DataTitle.vue';
+import DataBoxes from '@/components/DataBoxes.vue';
 
 
 export default {
   name: "index",
-  components: { Icon, DataTitle },
+  components: { Icon, DataTitle, DataBoxes },
   data() {
     return {
-      covidStats: {},
+      covidStatsGlobal: {},
       dataLoaded: false,
       loading: true,
       fetchTimeout: false,
@@ -36,7 +37,7 @@ export default {
       // const data = await (await fetch("https://api.covid19api.com/summary")).json();
       const data = offlineData;
       console.log(data);
-      this.covidStats = data.Global;
+      this.covidStatsGlobal = data.Global;
     },
 
     refreshPage() {
@@ -45,7 +46,7 @@ export default {
   },
 
   watch: {
-    covidStats(value) {
+    covidStatsGlobal(value) {
       if (Object.keys(value)?.[0] ? true : false) {
         this.fetchTimeout = false;
         this.dataLoaded = true;
@@ -89,6 +90,9 @@ export default {
     </div>
 
     <!-- Show data title -->
-    <DataTitle title="Global" :date="covidStats.Date" /> 
+    <DataTitle title="Global" :date="covidStatsGlobal.Date" />
+
+    <!-- Show stats in boxes -->
+    <DataBoxes :stats="covidStatsGlobal" />
   </section>
 </template>
