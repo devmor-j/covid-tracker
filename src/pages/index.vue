@@ -2,11 +2,12 @@
 import Icon from '@/components/Icon.vue';
 // NOTE: Remove offline data in prodduction
 import offlineData from '@/data/SummaryData.js';
+import DataTitle from '@/components/DataTitle.vue';
 
 
 export default {
   name: "index",
-  components: { Icon },
+  components: { Icon, DataTitle },
   data() {
     return {
       covidStats: {},
@@ -86,5 +87,8 @@ export default {
         class="border-2 border-blue-800 font-semibold p-1 text-sm rounded-lg hover:bg-slate-200 transition"
       >Refresh page</button>
     </div>
+
+    <!-- Show data title -->
+    <DataTitle title="Global" :date="covidStats.Date" /> 
   </section>
 </template>
