@@ -1,7 +1,7 @@
-import Index from '@/pages/index.vue';
+import HomePage from '@/pages/HomePage.vue';
 
 export const routes = [
-  { path: '/', component: Index },
+  { path: '/', component: HomePage },
 ];
 
 export default routes;

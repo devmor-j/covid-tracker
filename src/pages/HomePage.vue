@@ -1,14 +1,16 @@
 <script>
 import Icon from '@/components/Icon.vue';
-// NOTE: Remove offline data in prodduction
+
+// DEV: use offline data only for development purposes
 // import offlineData from '@/data/SummaryData.js';
+
 import DataTitle from '@/components/DataTitle.vue';
 import DataBoxes from '@/components/DataBoxes.vue';
 import CountrySelect from '@/components/CountrySelect.vue';
 
 
 export default {
-  name: "index",
+  name: "HomePage",
   components: { Icon, DataTitle, DataBoxes, CountrySelect },
   data() {
     return {
@@ -36,10 +38,11 @@ export default {
 
       }, 5000);
 
-      // TODO: Remove offline data and call api directly
-      const data = await (await fetch("https://api.covid19api.com/summary")).json();
+      // DEV: Remove offline data and call api directly
       // const data = offlineData;
-      // console.log(data);
+
+      const data = await (await fetch("https://api.covid19api.com/summary")).json();
+
       this.covidData = data;
       this.covidStat = data.Global;
     },
