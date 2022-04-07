@@ -17,10 +17,6 @@ jspm_packages/
 # Vim swap files
 *.swp
 
-# Build
-dist
-dist-ssr
-
 # IDE / Editor
 .idea
 
