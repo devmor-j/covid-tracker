@@ -1,17 +1,14 @@
 <script>
-import Icon from '@/components/Icon.vue';
-
-// DEV: use offline data only for development purposes
-// import offlineData from '@/data/SummaryData.js';
-
 import DataTitle from '@/components/DataTitle.vue';
 import DataBoxes from '@/components/DataBoxes.vue';
 import CountrySelect from '@/components/CountrySelect.vue';
 
+// DEV: use offline data only for development purposes
+// import offlineData from '@/data/SummaryData.js';
 
 export default {
   name: "HomePage",
-  components: { Icon, DataTitle, DataBoxes, CountrySelect },
+  components: { DataTitle, DataBoxes, CountrySelect },
   data() {
     return {
       covidData: {},
@@ -84,13 +81,60 @@ export default {
 
 <template>
   <section class="max-w-xl mx-auto py-4 space-y-6">
-    <!-- loading icon svg -->
-    <Icon
-      v-if="loading"
-      loading-text="true"
-      path="./src/assets/svg/loading-circle.svg"
-      class="w-20 mx-auto mt-4"
-    />
+    <div class="flex flex-col gap-2 items-center justify-center" v-if="loading">
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        class="w-20 mx-auto mt-4"
+      >
+        <defs>
+          <clipPath id="a">
+            <path d="M50 50 35 0h30z" />
+          </clipPath>
+          <circle
+            id="b"
+            clip-path="url(#a)"
+            cx="50"
+            cy="50"
+            style="fill:none;stroke:#aaa"
+            stroke-width="10"
+            r="40"
+          />
+        </defs>
+        <use xlink:href="#b" />
+        <use xlink:href="#b" transform="rotate(40 50 50)" />
+        <use xlink:href="#b" transform="rotate(80 50 50)" />
+        <use xlink:href="#b" transform="rotate(120 50 50)" />
+        <use xlink:href="#b" transform="rotate(160 50 50)" />
+        <use xlink:href="#b" transform="rotate(200 50 50)" />
+        <use xlink:href="#b" transform="rotate(240 50 50)" />
+        <use xlink:href="#b" transform="rotate(280 50 50)" />
+        <use xlink:href="#b" transform="rotate(320 50 50)" />
+        <circle
+          clip-path="url(#a)"
+          cx="50"
+          cy="50"
+          style="fill:none;stroke:orange"
+          stroke-width="12"
+          r="40"
+        >
+          <animateTransform
+            attributeName="transform"
+            attributeType="XML"
+            type="rotate"
+            values="0 50 50; 40 50 50; 80 50 50; 120 50 50; 160 50 50; 200 50 50; 240 50 50; 280 50 50; 320 50 50; 360 50 50"
+            dur="2s"
+            repeatCount="indefinite"
+            additive="replace"
+            calcMode="discrete"
+            fill="freeze"
+          />
+        </circle>
+      </svg>
+      <small class="font-semibold text-xs text-gray-500">Loading...</small>
+    </div>
 
     <!-- 5 sec timeout message -->
     <div
@@ -110,12 +154,16 @@ export default {
     </div>
 
     <!-- Show data title -->
-    <DataTitle :title="dataCountry" :date="covidData.Date" />
+    <DataTitle :title="dataCountry" :date="covidData.Date" v-if="!loading" />
 
     <!-- Show stats in boxes -->
-    <DataBoxes :stats="covidStat" />
+    <DataBoxes :stats="covidStat" v-if="!loading" />
 
     <!-- select country from list -->
-    <CountrySelect :countries="covidData.Countries" @country-changed="updateDataCountry" />
+    <CountrySelect
+      :countries="covidData.Countries"
+      @country-changed="updateDataCountry"
+      v-if="!loading"
+    />
   </section>
 </template>
